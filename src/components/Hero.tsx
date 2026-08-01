@@ -17,7 +17,9 @@ export default function Hero() {
             </h1>
 
             <p className="mx-auto max-w-prose text-base sm:text-lg text-black/70 leading-relaxed">
-              A student-driven innovation and technology community at CCRC, empowering students to explore, create, and lead through workshops, hackathons, competitions, technical events, and real-world projects.
+              A student-driven innovation and technology community at CCRC,
+              empowering students to explore, create, and lead through workshops,
+              hackathons, competitions, technical events, and real-world projects.
             </p>
           </div>
 

@@ -1,5 +1,5 @@
 import {Mail, MapPin} from 'lucide-react';
-import {Github, Linkedin, Facebook, Instagram} from '@/components/Icons';
+import {Facebook, Instagram} from '@/components/Icons';
 import Link from 'next/link';
 import {SITE_CONFIG} from '@/lib/site-config';
 

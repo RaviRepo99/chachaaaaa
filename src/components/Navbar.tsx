@@ -2,7 +2,7 @@
 
 import {useState, useEffect} from 'react';
 import {Menu, X, ChevronRight} from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import {motion, AnimatePresence} from 'framer-motion';
 import Link from 'next/link';
 import {usePathname} from 'next/navigation';
 // Theme toggle removed per user request
@@ -71,7 +71,7 @@ export default function Navbar() {
                 animate="visible"
                 variants={{
                   hidden: {opacity: 0, y: -6},
-                  visible: {opacity: 1, y: 0, transition: {staggerChildren: 0.04, when: 'beforeChildren', duration: 0.28}}
+                  visible: {opacity: 1, y: 0, transition: {staggerChildren: 0.04, when: 'beforeChildren', duration: 0.28}},
                 }}
               >
                 {navLinks.map((link) => {
@@ -96,7 +96,7 @@ export default function Navbar() {
                 })}
               </motion.div>
 
-              <motion.div className="hidden md:flex items-center gap-4" initial={{opacity:0,y:-6}} animate={{opacity:1,y:0,transition:{duration:0.28}}}>
+              <motion.div className="hidden md:flex items-center gap-4" initial={{opacity: 0, y: -6}} animate={{opacity: 1, y: 0, transition: {duration: 0.28}}}>
                 <Link
                   href="/join"
                   style={{willChange: 'transform'}}
@@ -131,17 +131,30 @@ export default function Navbar() {
                   variants={{
                     hidden: {opacity: 0, y: -8, scale: 0.98},
                     visible: {opacity: 1, y: 0, scale: 1, transition: {staggerChildren: 0.04, when: 'beforeChildren', duration: 0.28, ease: 'easeOut'}},
-                    exit: {opacity: 0, y: -6, scale: 0.98, transition: {duration: 0.18}}
+                    exit: {opacity: 0, y: -6, scale: 0.98, transition: {duration: 0.18}},
                   }}
                 >
-                  <motion.div className="flex flex-col space-y-6 px-4 py-8" variants={{hidden: {}, visible: {}, exit: {}}}>
+                  <motion.div
+                    className="flex flex-col space-y-6 px-4 py-8"
+                    variants={{hidden: {}, visible: {}, exit: {}}}
+                  >
                     {navLinks.map((link) => (
-                      <motion.div key={link.name} variants={{hidden: {opacity: 0, y: 8}, visible: {opacity: 1, y: 0, transition: {duration: 0.22}}}}>
+                      <motion.div
+                        key={link.name}
+                        variants={{
+                          hidden: {opacity: 0, y: 8},
+                          visible: {opacity: 1, y: 0, transition: {duration: 0.22}},
+                        }}
+                      >
                         <Link
                           key={link.name}
                           href={link.href}
                           onClick={() => setIsMobileMenuOpen(false)}
-                          className={`text-xl font-bold transition-colors ${getIsActive(link.href) ? 'text-[var(--color-citc-blue)]' : 'text-slate-700 dark:text-slate-300'}`}
+                          className={`text-xl font-bold transition-colors ${
+                            getIsActive(link.href) ?
+                              'text-[var(--color-citc-blue)]' :
+                              'text-slate-700 dark:text-slate-300'
+                          }`}
                         >
                           {link.name}
                         </Link>
