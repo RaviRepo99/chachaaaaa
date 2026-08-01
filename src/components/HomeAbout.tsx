@@ -111,7 +111,11 @@ export default function HomeAbout() {
                     {opacity: 1, y: 0, scale: 1} :
                     {opacity: 0, y: 40, scale: 0.97}
               }
-              transition={shouldReduceMotion ? undefined : {duration: 0.58, ease: easeOut, delay: index * 0.12}}
+              transition={shouldReduceMotion ? undefined : {
+                duration: 0.58,
+                ease: easeOut,
+                delay: index * 0.12,
+              }}
               whileHover={shouldReduceMotion ? undefined : {y: -6, scale: 1.02}}
               style={{willChange: 'transform, opacity'}}
               className="transform-gpu"
