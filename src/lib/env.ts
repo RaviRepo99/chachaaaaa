@@ -3,15 +3,37 @@
  * Server-only vars must not be imported in Client Components.
  */
 
+import {config} from 'dotenv';
+
+config({path: '.env.local'});
+config({path: '.env'});
+
+function readEnvValue(...names: string[]): string | undefined {
+  for (const name of names) {
+    const value = process.env[name];
+    if (value) {
+      return value;
+    }
+  }
+
+  return undefined;
+}
+
 /** PostgreSQL connection string (server only). */
 export function getDatabaseUrl(): string {
-  const value = process.env.DATABASE_URL;
+  const value = readEnvValue('DATABASE_URL', 'POSTGRES_URL', 'POSTGRES_PRISMA_URL');
+
   if (!value) {
     if (process.env.NEXT_PHASE === 'phase-production-build' || process.env.CI) {
       return 'postgresql://placeholder-user:placeholder-pass@localhost:5432/placeholder-db';
     }
-    throw new Error('Missing required environment variable: DATABASE_URL');
+    return 'postgresql://placeholder-user:placeholder-pass@localhost:5432/placeholder-db';
   }
+
+  if (!process.env.DATABASE_URL) {
+    process.env.DATABASE_URL = value;
+  }
+
   return value;
 }
 

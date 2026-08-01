@@ -5,6 +5,7 @@ import {db} from '@/db';
 import {members, teams} from '@/db/schema';
 import {createPageMetadata} from '@/lib/seo';
 import {sortYearsDesc} from '@/lib/years';
+import type {Member, Team} from '@/types';
 import TeamClient from '../TeamClient';
 
 export const dynamic = 'force-dynamic';
@@ -37,14 +38,33 @@ export default async function TeamYearPage({params, searchParams}: PageProps) {
   const yearNum = Number(year);
   if (!Number.isFinite(yearNum)) notFound();
 
-  const allTeams = await db.select().from(teams).orderBy(teams.year);
-  const allMembers = await db
-      .select()
-      .from(members)
-      .orderBy(members.createdAt, members.name);
+  let allTeams: Team[] = [];
+  let allMembers: Member[] = [];
 
-  const years = sortYearsDesc(allMembers.map((m) => m.memberYear));
-  if (!years.includes(yearNum)) notFound();
+  try {
+    allTeams = await db.select().from(teams).orderBy(teams.year);
+    allMembers = await db
+        .select()
+        .from(members)
+        .orderBy(members.createdAt, members.name);
+  } catch (error) {
+    console.error('Failed to load team data:', error);
+  }
+
+  const years = sortYearsDesc(
+      allMembers.map((m) => (m.memberYear as number)),
+  );
+  if (!years.includes(yearNum)) {
+    return (
+      <Suspense fallback={null}>
+        <TeamClient
+          teamData={{teams: allTeams, members: allMembers}}
+          initialYear={yearNum}
+          initialMemberSlug={memberSlug ?? null}
+        />
+      </Suspense>
+    );
+  }
 
   return (
     <Suspense fallback={null}>

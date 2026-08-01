@@ -17,8 +17,7 @@ export default function Hero() {
             </h1>
 
             <p className="mx-auto max-w-prose text-base sm:text-lg text-black/70 leading-relaxed">
-              A student-led tech club at NCIT. Workshops, hackathons, and projects run by
-              students who learn together and build together.
+              A student-driven innovation and technology community at CCRC, empowering students to explore, create, and lead through workshops, hackathons, competitions, technical events, and real-world projects.
             </p>
           </div>
 

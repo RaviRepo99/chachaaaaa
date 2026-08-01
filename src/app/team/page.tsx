@@ -3,6 +3,7 @@ import {Suspense} from 'react';
 import {db} from '@/db';
 import {teams, members} from '@/db/schema';
 import {createPageMetadata} from '@/lib/seo';
+import type {Member, Team} from '@/types';
 import TeamClient from './TeamClient';
 
 export const dynamic = 'force-dynamic';
@@ -21,14 +22,19 @@ type PageProps = {
 
 export default async function TeamPage({searchParams}: PageProps) {
   const {member: memberSlug} = await searchParams;
-  const allTeams = await db
-      .select()
-      .from(teams)
-      .orderBy(teams.year);
-  const allMembers = await db
-      .select()
-      .from(members)
-      .orderBy(members.createdAt, members.name);
+
+  let allTeams: Team[] = [];
+  let allMembers: Member[] = [];
+
+  try {
+    allTeams = await db.select().from(teams).orderBy(teams.year);
+    allMembers = await db
+        .select()
+        .from(members)
+        .orderBy(members.createdAt, members.name);
+  } catch (error) {
+    console.error('Failed to load team data:', error);
+  }
 
   const teamData = {teams: allTeams, members: allMembers};
   return (

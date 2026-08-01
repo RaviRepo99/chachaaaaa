@@ -13,11 +13,15 @@ const globalForPostgres = globalThis as typeof globalThis & {
   postgresClient?: ReturnType<typeof postgres>;
 };
 
+const databaseUrl = getDatabaseUrl();
+const requiresSsl = /supabase\.co|sslmode=require/i.test(databaseUrl);
+
 if (!globalForPostgres.postgresClient) {
-  globalForPostgres.postgresClient = postgres(getDatabaseUrl(), {
+  globalForPostgres.postgresClient = postgres(databaseUrl, {
     prepare: false,
     max: maxConns,
     idle_timeout: 20,
+    ssl: requiresSsl ? 'require' : undefined,
   });
 }
 
