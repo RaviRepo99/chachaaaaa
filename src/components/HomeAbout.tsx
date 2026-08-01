@@ -63,11 +63,11 @@ export default function HomeAbout() {
       ref={ref}
       initial={shouldReduceMotion ? false : {opacity: 0, y: 60, filter: 'blur(10px)'}}
       animate={
-        shouldReduceMotion
-          ? {opacity: 1, y: 0, filter: 'blur(0px)'}
-          : isInView
-            ? {opacity: 1, y: 0, filter: 'blur(0px)'}
-            : {opacity: 0, y: 60, filter: 'blur(10px)'}
+        shouldReduceMotion ?
+          {opacity: 1, y: 0, filter: 'blur(0px)'} :
+          isInView ?
+            {opacity: 1, y: 0, filter: 'blur(0px)'} :
+            {opacity: 0, y: 60, filter: 'blur(10px)'}
       }
       transition={shouldReduceMotion ? undefined : {duration: 0.8, ease: easeOut}}
       style={{willChange: 'transform, opacity, filter'}}
@@ -81,11 +81,11 @@ export default function HomeAbout() {
         <motion.header
           initial={shouldReduceMotion ? false : {opacity: 0, y: 20, filter: 'blur(6px)'}}
           animate={
-            shouldReduceMotion
-              ? {opacity: 1, y: 0, filter: 'blur(0px)'}
-              : isInView
-                ? {opacity: 1, y: 0, filter: 'blur(0px)'}
-                : {opacity: 0, y: 20, filter: 'blur(6px)'}
+            shouldReduceMotion ?
+              {opacity: 1, y: 0, filter: 'blur(0px)'} :
+              isInView ?
+                {opacity: 1, y: 0, filter: 'blur(0px)'} :
+                {opacity: 0, y: 20, filter: 'blur(6px)'}
           }
           transition={shouldReduceMotion ? undefined : {duration: 0.55, ease: easeOut}}
           style={{willChange: 'transform, opacity, filter'}}
@@ -105,11 +105,11 @@ export default function HomeAbout() {
               key={tile.title}
               initial={shouldReduceMotion ? false : {opacity: 0, y: 40, scale: 0.97}}
               animate={
-                shouldReduceMotion
-                  ? {opacity: 1, y: 0, scale: 1}
-                  : isInView
-                    ? {opacity: 1, y: 0, scale: 1}
-                    : {opacity: 0, y: 40, scale: 0.97}
+                shouldReduceMotion ?
+                  {opacity: 1, y: 0, scale: 1} :
+                  isInView ?
+                    {opacity: 1, y: 0, scale: 1} :
+                    {opacity: 0, y: 40, scale: 0.97}
               }
               transition={shouldReduceMotion ? undefined : {duration: 0.58, ease: easeOut, delay: index * 0.12}}
               whileHover={shouldReduceMotion ? undefined : {y: -6, scale: 1.02}}
@@ -118,7 +118,9 @@ export default function HomeAbout() {
             >
               <Link
                 href={tile.href}
-                className={`group relative flex h-full min-h-[9.5rem] flex-col justify-between overflow-hidden rounded-2xl border border-slate-200 bg-slate-50 p-5 transition-colors hover:border-slate-900/10 hover:bg-slate-100 dark:border-white/10 dark:bg-white/[0.04] dark:hover:border-white/20 dark:hover:bg-white/[0.07] md:p-6 ${tile.layout}`}
+                className={`group relative flex h-full min-h-[9.5rem] flex-col justify-between overflow-hidden rounded-2xl border border-slate-200 bg-slate-50 p-5 transition-colors hover:border-slate-900/10 hover:bg-slate-100 dark:border-white/10 dark:bg-white/[0.04] dark:hover:border-white/20 dark:hover:bg-white/[0.07] md:p-6 ${
+                  tile.layout
+                }`}
               >
                 {tile.featured && tile.image ? (
                   <>
