@@ -143,7 +143,7 @@ export default function RootLayout({
             })};`,
           }}
         />
-        
+
       </head>
       <body suppressHydrationWarning className="min-h-full flex flex-col w-full min-w-0 overflow-x-clip bg-white dark:bg-ccrcitclub-navy transition-colors duration-300">
         <Script src="/scripts/theme-init.js" strategy="beforeInteractive" />

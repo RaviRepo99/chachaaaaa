@@ -55,8 +55,8 @@ export default function MemberForm({teams, member}: Props) {
 
   const filteredTeams = sortTeamsForDisplay(
       teams.filter(
-        (t) =>
-          t.year === memberYear &&
+          (t) =>
+            t.year === memberYear &&
           ACTIVE_TEAM_ID_PREFIXES.some((prefix) => t.id.startsWith(prefix)),
       ),
   );
@@ -70,8 +70,8 @@ export default function MemberForm({teams, member}: Props) {
     setMemberYear(year);
     const validTeams = sortTeamsForDisplay(
         teams.filter(
-          (t) =>
-            t.year === year &&
+            (t) =>
+              t.year === year &&
             ACTIVE_TEAM_ID_PREFIXES.some((prefix) => t.id.startsWith(prefix)),
         ),
     );

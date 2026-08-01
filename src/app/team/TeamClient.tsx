@@ -121,8 +121,8 @@ export default function TeamClient({
 
   const displayTeams = sortTeamsForDisplay(
       teamData.teams.filter(
-        (t) =>
-          t.year === activeYear &&
+          (t) =>
+            t.year === activeYear &&
           (t.id.startsWith('t_patron') || t.id.startsWith('t_exec')),
       ),
   );

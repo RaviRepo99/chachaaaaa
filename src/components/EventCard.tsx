@@ -76,7 +76,7 @@ const EventCard: React.FC<EventCardProps> = ({event}) => {
 
       {showRegister && event.registrationLink && (
         <div className="px-6 pb-6 mt-auto">
-            <EventRegistrationButton
+          <EventRegistrationButton
             href={event.registrationLink}
             eventSlug={eventSlugFromTitle(event.title)}
             className="flex w-full items-center justify-center gap-2 rounded-xl bg-[var(--color-citc-blue)] px-4 py-3 text-sm font-bold text-white transition-colors hover:bg-[var(--color-citc-blue)]/90 relative z-10"
