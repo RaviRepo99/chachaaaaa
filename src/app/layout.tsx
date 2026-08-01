@@ -1,5 +1,6 @@
 import type {Metadata} from 'next';
 import Script from 'next/script';
+import {Suspense} from 'react';
 import ConditionalLayout from '@/components/ConditionalLayout';
 import ScrollToTop from '@/components/ScrollToTop';
 import {defaultSiteMetadata, getSiteUrl} from '@/lib/seo';
@@ -59,7 +60,7 @@ export default function RootLayout({
       SITE_CONFIG.social.facebook,
       SITE_CONFIG.social.instagram,
       SITE_CONFIG.social.linkedin,
-    ],
+    ].filter(Boolean),
   };
 
   const websiteJsonLd = {
@@ -146,7 +147,9 @@ export default function RootLayout({
       </head>
       <body suppressHydrationWarning className="min-h-full flex flex-col w-full min-w-0 overflow-x-clip bg-white dark:bg-ccrcitclub-navy transition-colors duration-300">
         <Script src="/scripts/theme-init.js" strategy="beforeInteractive" />
-        <ScrollToTop />
+        <Suspense fallback={null}>
+          <ScrollToTop />
+        </Suspense>
         <ConditionalLayout>{children}</ConditionalLayout>
       </body>
     </html>

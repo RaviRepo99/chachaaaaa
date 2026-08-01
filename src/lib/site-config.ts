@@ -18,7 +18,9 @@ export const SITE_CONFIG = {
     },
   },
   social: {
+    github: '',
     facebook: 'https://www.facebook.com/ccrcinfotechclub',
     instagram: 'https://www.instagram.com/ccrc.it.club/',
+    linkedin: '',
   },
 };
