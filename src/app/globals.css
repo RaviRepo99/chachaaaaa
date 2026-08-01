@@ -22,10 +22,10 @@
   --color-alabaster: #F9F8F4;
   --color-stone: #E6E2DA;
 
-  /* CITC logo brand */
-  --color-citc-blue: #0052CC;
-  --color-citc-navy: #050A18;
-  --color-citc-blue-muted: #E8F0FC;
+  /* CCRC IT CLUB logo brand */
+  --color-ccrcitclub-blue: #000000;
+  --color-ccrcitclub-navy: #050A18;
+  --color-ccrcitclub-blue-muted: #F3F4F6;
 }
 
 :root {
@@ -117,7 +117,7 @@ body {
 }
 
 .text-brand {
-  color: var(--color-citc-blue);
+  color: var(--color-ccrcitclub-blue);
 }
 
 .markdown-content {

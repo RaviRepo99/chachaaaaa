@@ -13,7 +13,7 @@ async function seed() {
   const teamData = [
     {id: 't_patron', name: 'Patron', year: 2025},
     {id: 't_mentors_2025', name: 'Mentors', year: 2025},
-    {id: 't_exec_2025', name: 'Executive Committee', year: 2025},
+    {id: 't_exec_2025', name: 'Board of Directors', year: 2025},
     {id: 't_faculty', name: 'Faculty Advisors', year: 2025},
   ];
 
@@ -85,7 +85,7 @@ async function seed() {
     {
       id: '002',
       title: 'Prompt to Image – AI Creativity Competition',
-      date: '2026-01-29',
+      date: '2026-07-21',
       time: '1 Week (Online) + Physical battle',
       location: 'Online',
       description: '## Introduction\n\nArtificial Intelligence is reshaping creative expression, with **prompt engineering** emerging as a crucial skill that connects human intent with AI-generated outcomes.',

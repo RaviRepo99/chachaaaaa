@@ -1,8 +1,8 @@
-# CITC Website
+# CCRCITCLUB Website
 
 Official website for **CITC** (Computer Engineering Innovation & Tech Club) at Nepal College of Information Technology (NCIT).
 
-**Live site:** [citc.ncit.edu.np](https://citc.ncit.edu.np)  
+**Live site:** [ccrcitclub.digital](https://ccrcitclub.digital)  
 **Tagline:** Innovate. Connect. Transform.
 
 ---
@@ -136,7 +136,7 @@ Postgres runs on port `5432` with credentials from `docker-compose.yml`. Apply s
 | `/join` | Tally membership embed |
 | `/register/ai` | AI competition page + countdown + Tally |
 
-Team display order: **Patron/Faculty advisors → Mentors → Executive Committee**. Executives are sorted by college year (senior first), then name.
+Team display order: **Patron/Faculty advisors → Mentors → Board of Directors**. Executives are sorted by college year (senior first), then name.
 
 ---
 

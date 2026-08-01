@@ -1,12 +1,12 @@
 export const SITE_CONFIG = {
-  name: 'CITC',
-  fullName: 'Computer Engineering Innovation & Tech Club (CITC)',
-  url: 'https://citc.ncit.edu.np',
+  name: 'CCRC IT CLUB',
+  fullName: 'Computer Science, Innovation & Information Technology Club',
+  url: 'https://ccrcitclub.digital',
   description:
-    'Computer Engineering Innovation & Tech Club at Nepal College of Information Technology. Innovate. Connect. Transform.',
-  tagline: 'Innovate. Connect. Transform.',
+    'Computer Science Innovation & IT CLUB at Capital College and Research Center. Empowering Students. Inspiring Innovation.',
+  tagline: 'Empowering Students. Inspiring Innovation.',
   logo: '/favicon/favicon.ico',
-  email: 'citc@ncit.edu.np',
+  email: 'ccrcitclub2077@gmail.com',
   foundingDate: '2025',
   location: {
     country: 'NP',
@@ -18,9 +18,7 @@ export const SITE_CONFIG = {
     },
   },
   social: {
-    github: 'https://github.com/CITC-Club',
-    facebook: 'https://www.facebook.com/citc.ncit/',
-    instagram: 'https://www.instagram.com/citc.ncit',
-    linkedin: 'https://www.linkedin.com/company/citc-ncit',
+    facebook: 'https://www.facebook.com/ccrcinfotechclub',
+    instagram: 'https://www.instagram.com/ccrc.it.club/',
   },
 };

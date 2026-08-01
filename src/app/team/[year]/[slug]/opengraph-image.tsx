@@ -3,7 +3,7 @@ import {absoluteUrl} from '@/lib/seo';
 import {getMemberPhotoUrl} from '@/lib/media';
 import {renderOgImage} from '@/lib/og-image';
 
-export const alt = 'CITC team member';
+export const alt = 'CCRC IT CLUB team member';
 export const size = {width: 1200, height: 630};
 export const contentType = 'image/png';
 
@@ -22,7 +22,7 @@ export default async function Image({
   if (!data) {
     return renderOgImage({
       title: 'Team member',
-      subtitle: 'CITC at NCIT',
+      subtitle: 'CCRC IT CLUB at CCRC',
       label: 'Team',
     });
   }
@@ -36,7 +36,7 @@ export default async function Image({
     subtitle: [member.type, team?.name, `${member.memberYear}`]
         .filter(Boolean)
         .join(' · '),
-    label: 'CITC Team',
+    label: 'CCRC IT CLUB Team',
     imageUrl: photoAbsolute,
   });
 }

@@ -34,7 +34,7 @@ export default function EventDetailsClient({event}: EventDetailsClientProps) {
           </Link>
           <div className="flex flex-wrap gap-3 mb-4">
             {event.tags?.map((tag) => (
-              <span key={tag} className="text-xs font-bold px-3 py-1 rounded-full bg-citc-blue/30 text-white backdrop-blur-md border border-citc-blue/40">
+              <span key={tag} className="text-xs font-bold px-3 py-1 rounded-full bg-[var(--color-citc-blue)]/30 text-white backdrop-blur-md border border-[var(--color-citc-blue)]/40">
                 {tag}
               </span>
             ))}
@@ -56,7 +56,7 @@ export default function EventDetailsClient({event}: EventDetailsClientProps) {
 
               <div className="space-y-4">
                 <div className="flex items-start gap-4">
-                  <div className="p-2 rounded-lg bg-citc-blue-muted dark:bg-citc-blue/20 text-citc-blue">
+                  <div className="p-2 rounded-lg bg-[var(--color-citc-blue-muted)] dark:bg-citc-blue/20 text-[var(--color-citc-blue)]">
                     <Calendar className="w-5 h-5" />
                   </div>
                   <div>
@@ -65,7 +65,7 @@ export default function EventDetailsClient({event}: EventDetailsClientProps) {
                   </div>
                 </div>
                 <div className="flex items-start gap-4">
-                  <div className="p-2 rounded-lg bg-citc-blue-muted dark:bg-citc-blue/20 text-citc-blue">
+                  <div className="p-2 rounded-lg bg-[var(--color-citc-blue-muted)] dark:bg-citc-blue/20 text-[var(--color-citc-blue)]">
                     <Clock className="w-5 h-5" />
                   </div>
                   <div>
@@ -74,7 +74,7 @@ export default function EventDetailsClient({event}: EventDetailsClientProps) {
                   </div>
                 </div>
                 <div className="flex items-start gap-4">
-                  <div className="p-2 rounded-lg bg-citc-blue-muted dark:bg-citc-blue/20 text-citc-blue">
+                  <div className="p-2 rounded-lg bg-[var(--color-citc-blue-muted)] dark:bg-citc-blue/20 text-[var(--color-citc-blue)]">
                     <MapPin className="w-5 h-5" />
                   </div>
                   <div>
@@ -89,7 +89,7 @@ export default function EventDetailsClient({event}: EventDetailsClientProps) {
                   <EventRegistrationButton
                     href={event.registrationLink}
                     eventSlug={eventSlugFromTitle(event.title)}
-                    className="flex w-full items-center justify-center gap-2 rounded-xl bg-citc-blue px-6 py-4 text-white font-bold transition-colors hover:bg-citc-blue/90"
+                    className="flex w-full items-center justify-center gap-2 rounded-xl bg-[var(--color-citc-blue)] px-6 py-4 text-white font-bold transition-colors hover:bg-[var(--color-citc-blue)]/90"
                     iconClassName="w-5 h-5"
                   />
                 </div>

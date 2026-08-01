@@ -64,8 +64,8 @@ export default function TeamYearPicker({
                 onClick={() => scrollToRoster(year)}
                 className={`snap-center shrink-0 flex flex-col items-center justify-center w-[7.5rem] h-[7.5rem] sm:w-32 sm:h-32 rounded-full border-2 transition-all ${
                   isActive ?
-                    'border-citc-blue bg-citc-blue text-white shadow-lg shadow-citc-blue/25 scale-105' :
-                    'border-slate-200 dark:border-white/15 bg-white dark:bg-white/5 text-citc-navy dark:text-white hover:border-citc-blue/50 hover:bg-citc-blue-muted dark:hover:bg-citc-blue/10'
+                  'border-[var(--color-citc-blue)] bg-[var(--color-citc-blue)] text-white shadow-lg shadow-[var(--color-citc-blue)]/25 scale-105' :
+                  'border-slate-200 dark:border-white/15 bg-white dark:bg-white/5 text-citc-navy dark:text-white hover:border-[var(--color-citc-blue)]/50 hover:bg-[var(--color-citc-blue-muted)] dark:hover:bg-citc-blue/10'
                 }`}
               >
                 <span className="text-2xl sm:text-3xl font-bold tabular-nums leading-none">
@@ -73,7 +73,7 @@ export default function TeamYearPicker({
                 </span>
                 <span
                   className={`mt-1.5 text-[10px] font-semibold uppercase tracking-wide ${
-                    isActive ? 'text-white/90' : 'text-citc-blue'
+                    isActive ? 'text-white/90' : 'text-[var(--color-citc-blue)]'
                   }`}
                 >
                   {isCurrent ? 'Current' : 'Past'}

@@ -1,6 +1,7 @@
 import type {Metadata} from 'next';
 import Script from 'next/script';
 import ConditionalLayout from '@/components/ConditionalLayout';
+import ScrollToTop from '@/components/ScrollToTop';
 import {defaultSiteMetadata, getSiteUrl} from '@/lib/seo';
 import {SITE_CONFIG} from '@/lib/site-config';
 import './globals.css';
@@ -18,7 +19,7 @@ export const metadata: Metadata = {
   },
   manifest: '/favicon/site.webmanifest',
   appleWebApp: {
-    title: 'CITC',
+    title: 'CCRC IT CLUB',
     statusBarStyle: 'default',
   },
 };
@@ -38,7 +39,7 @@ export default function RootLayout({
     'url': siteUrl,
     'logo': {
       '@type': 'ImageObject',
-      'url': `${siteUrl}/CITC_LOGOD.webp`,
+      'url': `${siteUrl}/ccrc_it_logo.jpg`,
     },
     'email': SITE_CONFIG.email,
     'foundingDate': SITE_CONFIG.foundingDate,
@@ -141,9 +142,11 @@ export default function RootLayout({
             })};`,
           }}
         />
+        
       </head>
-      <body className="min-h-full flex flex-col w-full min-w-0 overflow-x-clip bg-white dark:bg-citc-navy transition-colors duration-300">
+      <body suppressHydrationWarning className="min-h-full flex flex-col w-full min-w-0 overflow-x-clip bg-white dark:bg-ccrcitclub-navy transition-colors duration-300">
         <Script src="/scripts/theme-init.js" strategy="beforeInteractive" />
+        <ScrollToTop />
         <ConditionalLayout>{children}</ConditionalLayout>
       </body>
     </html>

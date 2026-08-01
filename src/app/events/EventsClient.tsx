@@ -51,9 +51,9 @@ export default function EventsClient({events}: EventsClientProps) {
               type="button"
               onClick={() => setActiveYear(null)}
               className={`px-5 py-2 rounded-full text-sm font-medium transition-colors ${
-                !activeYear ?
-                  'bg-citc-blue text-white' :
-                  'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700'
+                    !activeYear ?
+                    'bg-[var(--color-citc-blue)] text-white' :
+                    'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700'
               }`}
             >
               All Years
@@ -65,7 +65,7 @@ export default function EventsClient({events}: EventsClientProps) {
                 onClick={() => setActiveYear(year)}
                 className={`px-5 py-2 rounded-full text-sm font-medium transition-colors ${
                   activeYear === year ?
-                    'bg-citc-blue text-white' :
+                    'bg-[var(--color-citc-blue)] text-white' :
                     'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700'
                 }`}
               >
@@ -80,7 +80,7 @@ export default function EventsClient({events}: EventsClientProps) {
             <div className="flex flex-wrap items-center justify-center gap-4 mb-8">
               <div className="hidden sm:block h-px flex-1 min-w-[2rem] bg-slate-200 dark:bg-white/10" />
               <h2 className="flex items-center gap-2 text-xl sm:text-2xl md:text-3xl font-bold text-citc-navy dark:text-white text-center">
-                <Calendar className="w-7 h-7 sm:w-8 sm:h-8 text-citc-blue shrink-0" />
+                <Calendar className="w-7 h-7 sm:w-8 sm:h-8 text-[var(--color-citc-blue)] shrink-0" />
                 Running &amp; Upcoming
               </h2>
               <div className="hidden sm:block h-px flex-1 min-w-[2rem] bg-slate-200 dark:bg-white/10" />

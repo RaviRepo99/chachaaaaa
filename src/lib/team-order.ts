@@ -1,6 +1,6 @@
 import type {Member, Team} from '@/types';
 
-/** Display order: advisors → mentors → executive committee */
+/** Display order: advisors → mentors → board of directors */
 export function getTeamDisplayOrder(teamId: string): number {
   if (teamId === 't_patron' || teamId.startsWith('t_patron')) return 0;
   if (teamId === 't_faculty' || teamId.startsWith('t_faculty')) return 1;
@@ -17,12 +17,12 @@ export function sortTeamsForDisplay(teams: Team[]): Team[] {
   });
 }
 
-/** Higher college year first, then alphabetical by name */
+/** Keep the admin insertion order for the board roster display. */
 export function sortMembersBySeniorityAndName(members: Member[]): Member[] {
   return [...members].sort((a, b) => {
-    const yearA = a.collegeYear ?? 0;
-    const yearB = b.collegeYear ?? 0;
-    if (yearB !== yearA) return yearB - yearA;
+    const createdA = a.createdAt?.getTime?.() ?? 0;
+    const createdB = b.createdAt?.getTime?.() ?? 0;
+    if (createdA !== createdB) return createdA - createdB;
     return a.name.localeCompare(b.name);
   });
 }

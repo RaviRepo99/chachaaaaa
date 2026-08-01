@@ -11,10 +11,12 @@ import AdminUploadProgress, {
   type UploadProgressStepId,
 } from '@/components/admin/AdminUploadProgress';
 import {uploadAdminMedia} from '@/lib/admin-media-upload';
+import {sortTeamsForDisplay} from '@/lib/team-order';
 import {useLocalImagePreview} from '@/lib/use-local-image-preview';
 import type {Member, Team} from '@/types';
 
 const MAX_UPLOAD_BYTES = 12 * 1024 * 1024;
+const ACTIVE_TEAM_ID_PREFIXES = ['t_patron', 't_exec'];
 
 interface Props {
   teams: Team[];
@@ -34,8 +36,7 @@ export default function MemberForm({teams, member}: Props) {
   const [error, setError] = useState('');
 
   const [name, setName] = useState(member?.name || '');
-  const [type, setType] = useState(member?.type || 'Executive');
-  const [title, setTitle] = useState(member?.title || '');
+  const [type, setType] = useState(member?.type || 'President');
   const [department, setDepartment] = useState(member?.department || '');
   const [email, setEmail] = useState(member?.email || '');
   const [photo, setPhoto] = useState(member?.photo || '');
@@ -45,7 +46,6 @@ export default function MemberForm({teams, member}: Props) {
       member?.memberYear || new Date().getFullYear(),
   );
   const [teamId, setTeamId] = useState(member?.teamId || '');
-  const [collegeYear, setCollegeYear] = useState(member?.collegeYear || 1);
   const [github, setGithub] = useState(member?.socials?.github || '');
   const [linkedin, setLinkedin] = useState(member?.socials?.linkedin || '');
   const [instagram, setInstagram] = useState(member?.socials?.instagram || '');
@@ -53,11 +53,28 @@ export default function MemberForm({teams, member}: Props) {
   const [twitter, setTwitter] = useState(member?.socials?.twitter || '');
   const [website, setWebsite] = useState(member?.socials?.website || '');
 
-  const filteredTeams = teams.filter((t) => t.year === memberYear);
+  const filteredTeams = sortTeamsForDisplay(
+      teams.filter(
+        (t) =>
+          t.year === memberYear &&
+          ACTIVE_TEAM_ID_PREFIXES.some((prefix) => t.id.startsWith(prefix)),
+      ),
+  );
+
+  const getTeamDisplayName = (team: Team) => {
+    if (team.name === 'Executive Committee') return 'Board of Directors';
+    return team.name;
+  };
 
   const handleYearChange = (year: number) => {
     setMemberYear(year);
-    const validTeams = teams.filter((t) => t.year === year);
+    const validTeams = sortTeamsForDisplay(
+        teams.filter(
+          (t) =>
+            t.year === year &&
+            ACTIVE_TEAM_ID_PREFIXES.some((prefix) => t.id.startsWith(prefix)),
+        ),
+    );
     if (!validTeams.some((t) => t.id === teamId)) {
       setTeamId('');
     }
@@ -160,7 +177,7 @@ export default function MemberForm({teams, member}: Props) {
     const payload = {
       name,
       type,
-      title: title || null,
+      title: null,
       department: department || null,
       email,
       photo: photo || null,
@@ -168,7 +185,7 @@ export default function MemberForm({teams, member}: Props) {
       photoVersion,
       memberYear,
       teamId,
-      collegeYear,
+      collegeYear: null,
       socials: Object.keys(cleanSocials).length > 0 ? cleanSocials : null,
     };
 
@@ -219,7 +236,7 @@ export default function MemberForm({teams, member}: Props) {
         <AdminAlert
           variant="info"
           title="Create teams first"
-          message={`No teams exist for ${memberYear}. Go to Teams and add Patron, Mentors, and Executive groups for this year before adding members.`}
+          message={`No teams exist for ${memberYear}. Go to Teams and add Patron and Board of Directors groups for this year before adding members.`}
           dismissible={false}
         />
       ) : null}
@@ -264,22 +281,19 @@ export default function MemberForm({teams, member}: Props) {
                 onChange={(e) => setType(e.target.value)}
                 className="w-full px-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-cyan-500"
               >
-                <option value="Executive">Executive</option>
+                <option value="President">President</option>
+                <option value="Vice President">Vice President</option>
+                <option value="Chief Innovation Director">Chief Innovation Director</option>
+                <option value="Secretary">Secretary</option>
+                <option value="Program Incharge">Program Incharge</option>
+                <option value="Executive Head">Executive Head</option>
+                <option value="IT Head">IT Head</option>
+                <option value="Content Creator">Content Creator</option>
+                <option value="Advisor">Advisor</option>
+                <option value="Sponsorship Director">Sponsorship Director</option>
+                <option value="Treasurer">Treasurer</option>
                 <option value="Patron">Patron</option>
-                <option value="Faculty Advisor">Faculty Advisor</option>
-                <option value="Mentor">Mentor</option>
               </select>
-            </div>
-            <div>
-              <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5">
-                Title (e.g., President)
-              </label>
-              <input
-                type="text"
-                value={title}
-                onChange={(e) => setTitle(e.target.value)}
-                className="w-full px-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-cyan-500"
-              />
             </div>
             <div>
               <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5">
@@ -314,7 +328,7 @@ export default function MemberForm({teams, member}: Props) {
                 <option value="">Select team</option>
                 {filteredTeams.map((team) => (
                   <option key={team.id} value={team.id}>
-                    {team.name}
+                    {getTeamDisplayName(team)}
                   </option>
                 ))}
               </select>
@@ -336,22 +350,6 @@ export default function MemberForm({teams, member}: Props) {
                 required
                 className="w-full px-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-cyan-500"
               />
-            </div>
-            <div>
-              <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5">
-                College Year
-              </label>
-              <select
-                value={collegeYear}
-                onChange={(e) => setCollegeYear(Number(e.target.value))}
-                className="w-full px-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-cyan-500"
-              >
-                {[1, 2, 3, 4].map((y) => (
-                  <option key={y} value={y}>
-                    Year {y}
-                  </option>
-                ))}
-              </select>
             </div>
           </div>
         </div>

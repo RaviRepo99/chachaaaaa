@@ -23,7 +23,7 @@ export default function Sidebar({collapsed}: { collapsed: boolean }) {
         {!collapsed && (
           <div className="flex flex-col min-w-0">
             <span className="text-sm font-semibold tracking-tight text-forest truncate">
-              CITC Admin
+              CCRC IT CLUB Admin
             </span>
             <span className="text-[10px] font-medium text-forest/50 uppercase tracking-widest truncate">
               Content manager

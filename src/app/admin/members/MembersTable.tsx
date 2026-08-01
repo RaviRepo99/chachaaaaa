@@ -48,12 +48,28 @@ export default function MembersTable({
   });
 
   const typeColors: Record<string, string> = {
-    Executive:
+    President:
       'bg-blue-50 text-blue-700 border-blue-100 dark:bg-blue-950/30 dark:text-blue-400 dark:border-blue-900/30',
-    Faculty:
-      'bg-purple-50 text-purple-700 border-purple-100 dark:bg-purple-950/30 dark:text-purple-400 dark:border-purple-900/30',
-    Mentor:
+    'Vice President':
+      'bg-indigo-50 text-indigo-700 border-indigo-100 dark:bg-indigo-950/30 dark:text-indigo-400 dark:border-indigo-900/30',
+    'Chief Innovation Director':
+      'bg-violet-50 text-violet-700 border-violet-100 dark:bg-violet-950/30 dark:text-violet-400 dark:border-violet-900/30',
+    Secretary:
       'bg-emerald-50 text-emerald-700 border-emerald-100 dark:bg-emerald-950/30 dark:text-emerald-400 dark:border-emerald-900/30',
+    'Program Incharge':
+      'bg-cyan-50 text-cyan-700 border-cyan-100 dark:bg-cyan-950/30 dark:text-cyan-400 dark:border-cyan-900/30',
+    'Executive Head':
+      'bg-amber-50 text-amber-700 border-amber-100 dark:bg-amber-950/30 dark:text-amber-400 dark:border-amber-900/30',
+    'IT Head':
+      'bg-sky-50 text-sky-700 border-sky-100 dark:bg-sky-950/30 dark:text-sky-400 dark:border-sky-900/30',
+    'Content Creator':
+      'bg-pink-50 text-pink-700 border-pink-100 dark:bg-pink-950/30 dark:text-pink-400 dark:border-pink-900/30',
+    Advisor:
+      'bg-purple-50 text-purple-700 border-purple-100 dark:bg-purple-950/30 dark:text-purple-400 dark:border-purple-900/30',
+    'Sponsorship Director':
+      'bg-rose-50 text-rose-700 border-rose-100 dark:bg-rose-950/30 dark:text-rose-400 dark:border-rose-900/30',
+    Treasurer:
+      'bg-lime-50 text-lime-700 border-lime-100 dark:bg-lime-950/30 dark:text-lime-400 dark:border-lime-900/30',
     Patron:
       'bg-amber-50 text-amber-700 border-amber-100 dark:bg-amber-950/30 dark:text-amber-400 dark:border-amber-900/30',
   };
@@ -123,9 +139,6 @@ export default function MembersTable({
               <th className="text-left px-6 py-4 text-[10px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500">
                 Role Type
               </th>
-              <th className="text-left px-6 py-4 text-[10px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500">
-                College Year
-              </th>
               <th className="text-right px-6 py-4 text-[10px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500">
                 Actions
               </th>
@@ -168,7 +181,7 @@ export default function MembersTable({
                   </td>
                   <td className="px-6 py-4.5">
                     <span className="text-sm font-medium text-slate-700 dark:text-slate-300">
-                      {teamMap.get(member.teamId) || member.teamId}
+                      {teamMap.get(member.teamId) === 'Executive Committee' ? 'Board of Directors' : teamMap.get(member.teamId) || member.teamId}
                     </span>
                   </td>
                   <td className="px-6 py-4.5">
@@ -182,9 +195,6 @@ export default function MembersTable({
                     >
                       {member.type}
                     </span>
-                  </td>
-                  <td className="px-6 py-4.5 text-sm font-medium text-slate-500 dark:text-slate-400">
-                    {member.collegeYear ? `Year ${member.collegeYear}` : '-'}
                   </td>
                   <td className="px-6 py-4.5 text-right">
                     <div className="flex items-center justify-end gap-1.5">

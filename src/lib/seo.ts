@@ -37,7 +37,7 @@ export function createPageMetadata({
   const canonical = absoluteUrl(path);
   const ogImage = absoluteUrl(ogImagePath ?? `${path}/opengraph-image`);
 
-  const fullTitle = title.includes('CITC') ? title : `${title} | CITC`;
+  const fullTitle = title.includes('CCRC IT CLUB') ? title : `${title} | CCRC IT CLUB`;
 
   return {
     title: fullTitle,
@@ -71,7 +71,7 @@ export function createPageMetadata({
 }
 
 export const defaultSiteMetadata: Metadata = createPageMetadata({
-  title: 'CITC | Tech Community at NCIT',
+  title: 'CCRC IT CLUB - Computer Science Innovation & Tech Club',
   description: SITE_CONFIG.description,
   path: '/',
   ogImagePath: '/opengraph-image',

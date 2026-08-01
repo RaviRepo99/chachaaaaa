@@ -588,7 +588,7 @@ export default function EventForm({event}: Props) {
             <button
               type="submit"
               disabled={saving || uploading || galleryUploading}
-              className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-forest hover:bg-forest/90 dark:bg-citc-blue dark:hover:bg-citc-blue/90 text-white font-semibold rounded-xl transition-colors disabled:opacity-50 text-sm"
+              className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-forest hover:bg-forest/90 dark:bg-ccrcit-blue dark:hover:bg-citc-blue/90 text-white font-semibold rounded-xl transition-colors disabled:opacity-50 text-sm"
             >
               {saving ? (
                 <>

@@ -5,7 +5,7 @@ import {resolveMediaUrl} from '@/lib/media';
 import {renderOgImage} from '@/lib/og-image';
 import {eventSlugFromTitle} from '@/lib/event-slug';
 
-export const alt = 'CITC event';
+export const alt = 'CCRC IT CLUB event';
 export const size = {width: 1200, height: 630};
 export const contentType = 'image/png';
 
@@ -22,7 +22,7 @@ export default async function Image({
 
   if (!event) {
     return renderOgImage({
-      title: 'CITC Event',
+      title: 'CCRC IT CLUB Event',
       label: 'Events',
     });
   }
@@ -33,7 +33,7 @@ export default async function Image({
   return renderOgImage({
     title: event.title,
     subtitle: `${event.date} · ${event.location}`,
-    label: 'CITC Event',
+    label: 'CCRC IT CLUB Event',
     imageUrl,
   });
 }

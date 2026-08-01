@@ -16,7 +16,7 @@ const EventCard: React.FC<EventCardProps> = ({event}) => {
   const showRegister = (event.status === 'running' || event.status === 'upcoming');
 
   return (
-    <div className="group relative flex flex-col overflow-hidden rounded-2xl bg-white dark:bg-citc-navy border border-slate-200 dark:border-white/10 shadow-sm transition-colors hover:border-citc-blue/30">
+    <div className="group relative flex flex-col overflow-hidden rounded-2xl bg-white dark:bg-citc-navy border border-slate-200 dark:border-white/10 shadow-sm transition-colors hover:border-black/30">
       <Link href={eventPath(event)} className="block h-full">
         <div className="relative h-48 w-full overflow-hidden">
           <MediaImage
@@ -43,13 +43,13 @@ const EventCard: React.FC<EventCardProps> = ({event}) => {
               {event.tags?.map((tag) => (
                 <span
                   key={tag}
-                  className="text-xs font-medium px-2 py-1 rounded-md bg-citc-blue-muted text-citc-blue dark:bg-citc-blue/20 dark:text-citc-blue-muted border border-citc-blue/10"
+                  className="text-xs font-medium px-2 py-1 rounded-md bg-[var(--color-citc-blue-muted)] text-[var(--color-citc-blue)] dark:bg-citc-blue/20 dark:text-citc-blue-muted border border-black/10"
                 >
                   {tag}
                 </span>
               ))}
             </div>
-            <h3 className="text-xl font-bold text-citc-navy dark:text-white mb-2 line-clamp-2 group-hover:text-citc-blue transition-colors">
+            <h3 className="text-xl font-bold text-citc-navy dark:text-white mb-2 line-clamp-2 group-hover:text-[var(--color-citc-blue)] transition-colors">
               {event.title}
             </h3>
             <p className="text-sm text-slate-600 dark:text-slate-400 line-clamp-2 mb-4">
@@ -59,15 +59,15 @@ const EventCard: React.FC<EventCardProps> = ({event}) => {
 
           <div className="mt-auto space-y-3">
             <div className="flex items-center gap-2 text-sm text-slate-500 dark:text-slate-400">
-              <Calendar className="w-4 h-4 text-citc-blue" />
+              <Calendar className="w-4 h-4 text-[var(--color-citc-blue)]" />
               <span>{event.date}</span>
             </div>
             <div className="flex items-center gap-2 text-sm text-slate-500 dark:text-slate-400">
-              <Clock className="w-4 h-4 text-citc-blue" />
+              <Clock className="w-4 h-4 text-[var(--color-citc-blue)]" />
               <span>{event.time}</span>
             </div>
             <div className="flex items-center gap-2 text-sm text-slate-500 dark:text-slate-400">
-              <MapPin className="w-4 h-4 text-citc-blue" />
+              <MapPin className="w-4 h-4 text-[var(--color-citc-blue)]" />
               <span>{event.location}</span>
             </div>
           </div>
@@ -76,10 +76,10 @@ const EventCard: React.FC<EventCardProps> = ({event}) => {
 
       {showRegister && event.registrationLink && (
         <div className="px-6 pb-6 mt-auto">
-          <EventRegistrationButton
+            <EventRegistrationButton
             href={event.registrationLink}
             eventSlug={eventSlugFromTitle(event.title)}
-            className="flex w-full items-center justify-center gap-2 rounded-xl bg-citc-blue px-4 py-3 text-sm font-bold text-white transition-colors hover:bg-citc-blue/90 relative z-10"
+            className="flex w-full items-center justify-center gap-2 rounded-xl bg-[var(--color-citc-blue)] px-4 py-3 text-sm font-bold text-white transition-colors hover:bg-[var(--color-citc-blue)]/90 relative z-10"
           />
         </div>
       )}

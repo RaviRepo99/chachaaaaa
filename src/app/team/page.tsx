@@ -8,9 +8,9 @@ import TeamClient from './TeamClient';
 export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = createPageMetadata({
-  title: 'Meet the Team | CITC',
+  title: 'TEAM - IT CLUB',
   description:
-    'Meet CITC mentors, executives, and advisors at Nepal College of Information Technology. Browse rosters by academic year.',
+    'Meet CCRC IT CLUB Board of Directors at Capital College and Research Center. Browse rosters by academic year.',
   path: '/team',
   ogImagePath: '/team/opengraph-image',
 });
@@ -28,7 +28,7 @@ export default async function TeamPage({searchParams}: PageProps) {
   const allMembers = await db
       .select()
       .from(members)
-      .orderBy(members.name);
+      .orderBy(members.createdAt, members.name);
 
   const teamData = {teams: allTeams, members: allMembers};
   return (

@@ -6,7 +6,7 @@ This version has breaking changes — APIs, conventions, and file structure may 
 
 ## Project
 
-CITC club website — Next.js 16, Drizzle (Postgres), Supabase (admin auth + storage). Full context: **[README.md](./README.md)**. Contributor conventions: **[CONTRIBUTING.md](./CONTRIBUTING.md)**.
+CCRC IT  club website — Next.js 16, Drizzle (Postgres), Supabase (admin auth + storage). Full context: **[README.md](./README.md)**. Contributor conventions: **[CONTRIBUTING.md](./CONTRIBUTING.md)**.
 
 ## Conventions (short)
 
@@ -15,7 +15,7 @@ CITC club website — Next.js 16, Drizzle (Postgres), Supabase (admin auth + sto
 | Imports | Always `@/` (e.g. `@/components/Footer`, `@/app/admin/events/EventForm`). No `../` across folders. |
 | Types | Use `Member`, `Event`, `Team` from `@/types` (inferred from Drizzle). Do not duplicate row shapes by hand. |
 | Env | Read via `@/lib/env` (`getDatabaseUrl`, `getSupabaseUrl`, `getSupabaseAnonKey`). Copy `.env.example` → `.env.local`. |
-| Brand copy | Tagline and site metadata in `@/lib/site-config`. Colors in `globals.css` (`citc-blue`, `citc-navy`). |
+| Brand copy | Tagline and site metadata in `@/lib/site-config`. Colors in `globals.css` (`ccrcitclub-blue`, `ccrcitclub-navy`). |
 | Years | `sortYearsDesc`, `resolveAcademicYear` from `@/lib/years`. |
 | Team order | `sortTeamsForDisplay`, `sortMembersBySeniorityAndName` from `@/lib/team-order`. |
 | Member URLs | `memberSlugFromName`, `memberProfilePath` from `@/lib/member-slug`. |
@@ -34,5 +34,5 @@ CITC club website — Next.js 16, Drizzle (Postgres), Supabase (admin auth + sto
 
 ## Brand
 
-- Blue: `#0052CC` (`citc-blue`)
-- Navy: `#050A18` (`citc-navy`)
+- Blue: `#0052CC` (`ccrcitclub-blue`)
+- Navy: `#050A18` (`ccrcitclub-navy`)

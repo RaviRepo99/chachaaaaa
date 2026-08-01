@@ -120,7 +120,11 @@ export default function TeamClient({
   );
 
   const displayTeams = sortTeamsForDisplay(
-      teamData.teams.filter((t) => t.year === activeYear),
+      teamData.teams.filter(
+        (t) =>
+          t.year === activeYear &&
+          (t.id.startsWith('t_patron') || t.id.startsWith('t_exec')),
+      ),
   );
 
   const getTeamMembers = (teamId: string) => {
@@ -146,7 +150,7 @@ export default function TeamClient({
             Meet the Team
           </h1>
           <p className="text-lg text-slate-600 dark:text-slate-400">
-            Meet the people who run CITC at NCIT. Tap a member for details.
+            Meet the people who run IT CLUB at CCRC. Tap a member for details.
           </p>
         </div>
 
@@ -160,16 +164,24 @@ export default function TeamClient({
               const teamMembers = getTeamMembers(team.id);
               if (teamMembers.length === 0) return null;
 
-              const isSmallTeam = teamMembers.length <= 4;
+              const isSmallTeam = teamMembers.length <= 3;
+              const titleText =
+                team.id.startsWith('t_patron') ?
+                  'Patron' :
+                  'Board of Directors';
 
               return (
                 <section key={team.id} id={team.id} className="scroll-mt-32">
-                  <div className="flex items-center gap-4 mb-12">
-                    <div className="h-px flex-1 bg-slate-200 dark:bg-white/10" />
-                    <h2 className="text-2xl md:text-3xl font-bold text-citc-navy dark:text-white text-center px-4 shrink-0">
-                      {team.name}
+                  <div className="mb-12 text-center">
+                    <h2
+                      className={`${
+                        titleText === 'Board of Directors' ?
+                          'text-2xl md:text-3xl font-semibold tracking-tight text-citc-navy dark:text-white' :
+                          'text-2xl md:text-3xl font-bold text-citc-navy dark:text-white'
+                      }`}
+                    >
+                      {titleText}
                     </h2>
-                    <div className="h-px flex-1 bg-slate-200 dark:bg-white/10" />
                   </div>
 
                   <motion.div
@@ -177,10 +189,10 @@ export default function TeamClient({
                     initial="hidden"
                     whileInView="visible"
                     viewport={{once: true, margin: '-50px'}}
-                    className={`grid gap-8 ${
+                    className={`grid gap-5 ${
                       isSmallTeam ?
-                        'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 max-w-5xl mx-auto' :
-                        'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'
+                        'grid-cols-1 md:grid-cols-2 xl:grid-cols-4 max-w-[1240px] mx-auto' :
+                        'grid-cols-1 md:grid-cols-2 xl:grid-cols-4'
                     }`}
                   >
                     {teamMembers.map((member) => (

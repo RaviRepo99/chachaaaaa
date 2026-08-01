@@ -1,6 +1,7 @@
 'use client';
 
 import {useState} from 'react';
+import {motion} from 'framer-motion';
 import {useRouter} from 'next/navigation';
 import {createBrowserSupabaseClient} from '@/utils/supabase/client';
 import ThemeToggle from '@/components/ThemeToggle';
@@ -38,10 +39,15 @@ export default function LoginClient() {
       <div className="absolute top-6 right-6">
         <ThemeToggle />
       </div>
-      <div className="w-full max-w-md p-8 bg-white dark:bg-slate-900 rounded-2xl shadow-lg border border-slate-200 dark:border-slate-800">
+      <motion.div
+        initial={{opacity: 0, y: 30, scale: 0.97}}
+        animate={{opacity: 1, y: 0, scale: 1}}
+        transition={{duration: 0.5, ease: 'easeOut'}}
+        className="w-full max-w-md p-8 bg-white dark:bg-slate-900 rounded-2xl shadow-2xl border border-slate-200 dark:border-slate-800"
+      >
         <div className="text-center mb-8">
-          <h1 className="text-2xl font-bold text-slate-900 dark:text-white">Admin Login</h1>
-          <p className="text-slate-500 dark:text-slate-400 mt-2">Sign in to manage CITC website</p>
+          <h1 className="text-2xl font-bold text-black dark:text-white">Admin Login</h1>
+          <p className="text-slate-500 dark:text-slate-400 mt-2">Sign in to manage CCRC IT CLUB website</p>
         </div>
 
         <form onSubmit={handleLogin} className="space-y-4">
@@ -51,7 +57,7 @@ export default function LoginClient() {
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="w-full px-4 py-2 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-cyan-500"
+              className="w-full px-4 py-2 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-black"
               required
             />
           </div>
@@ -61,7 +67,7 @@ export default function LoginClient() {
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full px-4 py-2 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-cyan-500"
+              className="w-full px-4 py-2 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-black"
               required
             />
           </div>
@@ -71,12 +77,12 @@ export default function LoginClient() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full py-3 bg-cyan-600 hover:bg-cyan-700 text-white font-bold rounded-xl transition-colors disabled:opacity-50"
+            className="w-full py-3 bg-black hover:bg-slate-900 text-white font-bold rounded-xl transition-all duration-200 shadow-lg shadow-slate-900/10 disabled:opacity-50"
           >
             {loading ? 'Signing in...' : 'Sign In'}
           </button>
         </form>
-      </div>
+      </motion.div>
     </div>
   );
 }

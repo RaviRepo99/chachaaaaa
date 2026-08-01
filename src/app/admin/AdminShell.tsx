@@ -95,7 +95,7 @@ export default function AdminShell({
             <ThemeToggle />
             <div className="h-5 w-px bg-stone" />
             <div className="flex items-center gap-3">
-              <div className="relative w-8 h-8 rounded-full bg-forest dark:bg-citc-blue flex items-center justify-center text-white text-xs font-semibold shadow-sm overflow-hidden shrink-0">
+              <div className="relative w-8 h-8 rounded-full bg-forest dark:bg-ccrcitclub-blue flex items-center justify-center text-white text-xs font-semibold shadow-sm overflow-hidden shrink-0">
                 {photoUrl ? (
                   <img
                     src={photoUrl}

@@ -20,12 +20,12 @@ export async function generateMetadata({
   const {year} = await params;
   const yearNum = Number(year);
   if (!Number.isFinite(yearNum)) {
-    return {title: 'Team | CITC'};
+    return {title: 'Team | CCRC IT CLUB'};
   }
 
   return createPageMetadata({
-    title: `CITC Team ${yearNum}`,
-    description: `Meet the CITC ${yearNum} roster — mentors, executives, and advisors at Nepal College of Information Technology.`,
+    title: `CCRC IT CLUB Team ${yearNum}`,
+    description: `Meet the CCRC IT CLUB ${yearNum} roster — Board of Directors at Capital College and Research Center.`,
     path: `/team/${yearNum}`,
     ogImagePath: `/team/${yearNum}/opengraph-image`,
   });
@@ -38,7 +38,10 @@ export default async function TeamYearPage({params, searchParams}: PageProps) {
   if (!Number.isFinite(yearNum)) notFound();
 
   const allTeams = await db.select().from(teams).orderBy(teams.year);
-  const allMembers = await db.select().from(members).orderBy(members.name);
+  const allMembers = await db
+      .select()
+      .from(members)
+      .orderBy(members.createdAt, members.name);
 
   const years = sortYearsDesc(allMembers.map((m) => m.memberYear));
   if (!years.includes(yearNum)) notFound();

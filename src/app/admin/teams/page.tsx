@@ -21,7 +21,7 @@ export default async function TeamsPage() {
     <div>
       <AdminPageHeader
         title="Teams"
-        description="Start here each academic year: create Patron, Mentors, and Executive teams before adding members."
+        description="Start here each academic year: create Patron and Board of Directors teams before adding members."
         breadcrumbs={[
           {label: 'Dashboard', href: '/admin'},
           {label: 'Teams'},

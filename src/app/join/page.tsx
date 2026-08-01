@@ -33,7 +33,7 @@ export default function JoinClubPage() {
           frameBorder="0"
           marginHeight={0}
           marginWidth={0}
-          title="CITC Reserve"
+          title="CCRC IT CLUB Reserve"
           className="tally-embed rounded-2xl dark:invert"
           style={{minHeight: '600px'}}
         />

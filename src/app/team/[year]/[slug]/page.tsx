@@ -16,12 +16,12 @@ export async function generateMetadata({
   const {year, slug} = await params;
   const yearNum = Number(year);
   if (!Number.isFinite(yearNum)) {
-    return {title: 'Member not found | CITC'};
+    return {title: 'Member not found | CCRC IT CLUB'};
   }
 
   const data = await getMemberWithTeam(yearNum, slug);
   if (!data) {
-    return {title: 'Member not found | CITC'};
+    return {title: 'Member not found | CCRC IT CLUB'};
   }
 
   const {member, team} = data;
@@ -30,13 +30,13 @@ export async function generateMetadata({
     member.type,
     team?.name,
     `Academic year ${member.memberYear}`,
-    'CITC at NCIT',
+    'CCRC IT CLUB at CCRC',
   ]
       .filter(Boolean)
       .join(' · ');
 
   return createPageMetadata({
-    title: `${member.name} — CITC Team ${member.memberYear}`,
+    title: `${member.name} — CCRC IT CLUB Team ${member.memberYear}`,
     description,
     path,
     ogImagePath: `${path}/opengraph-image`,

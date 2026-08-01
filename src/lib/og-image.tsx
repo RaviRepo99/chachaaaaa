@@ -12,7 +12,7 @@ type OgImageOptions = {
 export function renderOgImage({
   title,
   subtitle,
-  label = 'CITC · NCIT',
+  label = 'IT CLUB · CCRC',
   imageUrl,
 }: OgImageOptions) {
   const displayTitle =
@@ -79,7 +79,7 @@ export function renderOgImage({
             ) : null}
             </div>
             <div style={{fontSize: 22, color: 'rgba(255,255,255,0.55)'}}>
-            citc.ncit.edu.np
+            ccrcitclub2077@gmail.com
             </div>
           </div>
           {imageUrl ? (

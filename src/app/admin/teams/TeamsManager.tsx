@@ -14,9 +14,7 @@ interface Props {
 
 const TEAM_TYPES = [
   {id: 't_patron', label: 'Patron'},
-  {id: 't_faculty', label: 'Faculty Advisors'},
-  {id: 't_mentors', label: 'Mentors'},
-  {id: 't_exec', label: 'Executive Committee'},
+  {id: 't_exec', label: 'Board of Directors'},
 ];
 
 export default function TeamsManager({teams, countMap, years}: Props) {
@@ -26,7 +24,7 @@ export default function TeamsManager({teams, countMap, years}: Props) {
   const [deletingId, setDeletingId] = useState<string | null>(null);
   const [newYear, setNewYear] = useState(new Date().getFullYear() + 1);
   const [newTeamId, setNewTeamId] = useState('t_exec');
-  const [newTeamName, setNewTeamName] = useState('Executive Committee');
+  const [newTeamName, setNewTeamName] = useState('Board of Directors');
   const [error, setError] = useState('');
   const [confirmDeleteId, setConfirmDeleteId] = useState<string | null>(null);
 

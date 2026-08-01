@@ -20,11 +20,12 @@ export default function MemberProfileContent({
 }: MemberProfileContentProps) {
   const photoUrl = getMemberPhotoUrl(member);
   const roleLine =
+    member.type ||
     member.title ||
     member.department ||
     (member.collegeYear ?
-      `Year ${member.collegeYear} · ${member.type}` :
-      member.type);
+      `Year ${member.collegeYear}` :
+      'Member');
 
   return (
     <div className="grid grid-cols-1 sm:grid-cols-[220px_1fr] gap-8 items-start">
@@ -45,8 +46,8 @@ export default function MemberProfileContent({
 
       <div className="space-y-5 min-w-0">
         <header>
-          <p className="text-xs font-semibold uppercase tracking-wider text-citc-blue mb-1.5">
-            {team?.name ?? 'CITC'} · {member.memberYear}
+          <p className="text-xs font-semibold uppercase tracking-wider text-[var(--color-citc-blue)] mb-1.5">
+            {team?.name === 'Executive Committee' ? 'Board of Directors' : team?.name ?? 'CITC'} · {member.memberYear}
           </p>
           <h2
             id="member-profile-title"
@@ -62,7 +63,7 @@ export default function MemberProfileContent({
         <div className="flex flex-wrap gap-2.5">
           <a
             href={`mailto:${member.email}`}
-            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-citc-blue text-white text-sm font-semibold hover:bg-citc-blue/90 transition-colors"
+            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[var(--color-citc-blue)] text-white text-sm font-semibold hover:bg-[var(--color-citc-blue)]/90 transition-colors"
           >
             <Mail className="w-4 h-4" />
             Email
@@ -72,7 +73,7 @@ export default function MemberProfileContent({
               href={normalizeSocialUrl(member.socials.website)}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl border border-slate-200 dark:border-white/10 text-sm font-semibold text-slate-700 dark:text-slate-200 hover:border-citc-blue transition-colors"
+              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl border border-slate-200 dark:border-white/10 text-sm font-semibold text-slate-700 dark:text-slate-200 hover:border-[var(--color-citc-blue)] transition-colors"
             >
               <Globe className="w-4 h-4" />
               Website
@@ -94,7 +95,7 @@ export default function MemberProfileContent({
                   href={normalizeSocialUrl(member.socials.github)}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-2.5 rounded-xl border border-slate-200 dark:border-white/10 hover:border-citc-blue text-slate-700 dark:text-slate-200 transition-colors"
+                  className="p-2.5 rounded-xl border border-slate-200 dark:border-white/10 hover:border-[var(--color-citc-blue)] text-slate-700 dark:text-slate-200 transition-colors"
                   aria-label="GitHub"
                 >
                   <Github className="w-5 h-5" />
@@ -105,7 +106,7 @@ export default function MemberProfileContent({
                   href={normalizeSocialUrl(member.socials.linkedin)}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-2.5 rounded-xl border border-slate-200 dark:border-white/10 hover:border-citc-blue text-slate-700 dark:text-slate-200 transition-colors"
+                  className="p-2.5 rounded-xl border border-slate-200 dark:border-white/10 hover:border-[var(--color-citc-blue)] text-slate-700 dark:text-slate-200 transition-colors"
                   aria-label="LinkedIn"
                 >
                   <Linkedin className="w-5 h-5" />
@@ -116,7 +117,7 @@ export default function MemberProfileContent({
                   href={normalizeSocialUrl(member.socials.instagram)}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-2.5 rounded-xl border border-slate-200 dark:border-white/10 hover:border-citc-blue text-slate-700 dark:text-slate-200 transition-colors"
+                  className="p-2.5 rounded-xl border border-slate-200 dark:border-white/10 hover:border-[var(--color-citc-blue)] text-slate-700 dark:text-slate-200 transition-colors"
                   aria-label="Instagram"
                 >
                   <Instagram className="w-5 h-5" />
@@ -127,7 +128,7 @@ export default function MemberProfileContent({
                   href={normalizeSocialUrl(member.socials.facebook)}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-2.5 rounded-xl border border-slate-200 dark:border-white/10 hover:border-citc-blue text-slate-700 dark:text-slate-200 transition-colors"
+                  className="p-2.5 rounded-xl border border-slate-200 dark:border-white/10 hover:border-[var(--color-citc-blue)] text-slate-700 dark:text-slate-200 transition-colors"
                   aria-label="Facebook"
                 >
                   <Facebook className="w-5 h-5" />

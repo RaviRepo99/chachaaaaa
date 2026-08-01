@@ -40,7 +40,7 @@ export default function RegisterClient({event}: RegisterClientProps) {
           </p>
           <Link
             href={backPath}
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-citc-blue text-white font-bold hover:bg-citc-blue/90 transition-colors"
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[var(--color-citc-blue)] text-white font-bold hover:bg-[var(--color-citc-blue)]/90 transition-colors"
           >
             <ArrowLeft className="w-4 h-4" /> Go Back to Event
           </Link>
@@ -54,7 +54,7 @@ export default function RegisterClient({event}: RegisterClientProps) {
     return (
       <div className="min-h-screen pt-32 pb-20 bg-slate-50 dark:bg-citc-navy flex items-center justify-center">
         <div className="text-center p-8 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-white/10 max-w-md w-full shadow-md">
-          <Loader2 className="w-8 h-8 text-citc-blue animate-spin mx-auto mb-4" />
+          <Loader2 className="w-8 h-8 text-[var(--color-citc-blue)] animate-spin mx-auto mb-4" />
           <h2 className="text-lg font-bold text-slate-800 dark:text-white mb-2">Redirecting to Registration</h2>
           <p className="text-sm text-slate-500 dark:text-slate-400 mb-6">
             We are taking you to the external registration page. If it
@@ -64,7 +64,7 @@ export default function RegisterClient({event}: RegisterClientProps) {
             href={event.registrationLink}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-citc-blue text-white font-bold hover:bg-citc-blue/90 transition-colors"
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[var(--color-citc-blue)] text-white font-bold hover:bg-[var(--color-citc-blue)]/90 transition-colors"
           >
             Open Registration <ExternalLink className="w-4 h-4" />
           </a>
@@ -117,7 +117,7 @@ export default function RegisterClient({event}: RegisterClientProps) {
         <div className="mb-8">
           <Link
             href={backPath}
-            className="inline-flex items-center gap-2 text-slate-500 hover:text-citc-blue dark:text-slate-400 dark:hover:text-white mb-6 transition-colors group font-semibold"
+            className="inline-flex items-center gap-2 text-slate-500 hover:text-[var(--color-citc-blue)] dark:text-slate-400 dark:hover:text-white mb-6 transition-colors group font-semibold"
           >
             <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
             <span>Back to Event Details</span>
@@ -129,7 +129,7 @@ export default function RegisterClient({event}: RegisterClientProps) {
             transition={{duration: 0.4}}
             className="bg-white dark:bg-slate-900/50 rounded-2xl p-6 md:p-8 border border-slate-200 dark:border-white/10 shadow-sm dark:shadow-none"
           >
-            <span className="text-xs font-bold px-3 py-1 rounded-full bg-citc-blue/10 text-citc-blue dark:bg-citc-blue/20 dark:text-citc-blue-muted border border-citc-blue/10 uppercase tracking-wider">
+            <span className="text-xs font-bold px-3 py-1 rounded-full bg-[var(--color-citc-blue)]/10 text-[var(--color-citc-blue)] dark:bg-citc-blue/20 dark:text-citc-blue-muted border border-[var(--color-citc-blue)]/10 uppercase tracking-wider">
               Registration
             </span>
             <h1 className="text-2xl md:text-3.5xl font-extrabold text-slate-900 dark:text-white mt-4">
@@ -147,7 +147,7 @@ export default function RegisterClient({event}: RegisterClientProps) {
         >
           {iframeLoading && (
             <div className="absolute inset-0 flex flex-col items-center justify-center bg-white z-20">
-              <Loader2 className="w-8 h-8 text-citc-blue animate-spin mb-4" />
+              <Loader2 className="w-8 h-8 text-[var(--color-citc-blue)] animate-spin mb-4" />
               <p className="text-sm text-slate-500 font-medium animate-pulse">
                 Loading registration form...
               </p>

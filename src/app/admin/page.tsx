@@ -33,7 +33,7 @@ export default async function AdminDashboard() {
           Dashboard
         </h1>
         <p className="text-sm text-forest/60">
-          Manage what appears on the public CITC website
+          Manage what appears on the public CCRC IT CLUB website
         </p>
       </div>
 

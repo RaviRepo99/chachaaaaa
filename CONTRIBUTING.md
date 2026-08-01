@@ -1,4 +1,4 @@
-# Contributing to CITC Website
+# Contributing to CCRC IT CLUB Website
 
 Thank you for helping maintain the club site. This guide keeps changes consistent for anyone editing the repo later.
 
@@ -117,4 +117,4 @@ By contributing, you agree that your contributions will be licensed under the [A
 
 ## Questions
 
-Club contact: citc@ncit.edu.np
+Club contact: ccrcitclub2077@gmail.com

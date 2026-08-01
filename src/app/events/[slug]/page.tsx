@@ -1,9 +1,8 @@
 import type {Metadata} from 'next';
-import {db} from '@/db';
-import {events} from '@/db/schema';
 import {notFound} from 'next/navigation';
 import {createPageMetadata} from '@/lib/seo';
-import {eventSlugFromTitle, eventPath} from '@/lib/event-slug';
+import {eventPath} from '@/lib/event-slug';
+import {getEventBySlug} from '@/lib/events';
 import EventDetailsClient from './EventDetailsClient';
 
 export const dynamic = 'force-dynamic';
@@ -12,20 +11,13 @@ type PageProps = {
   params: Promise<{ slug: string }>;
 };
 
-async function findEventBySlug(slug: string) {
-  const allEvents = await db.select().from(events);
-  return allEvents.find(
-      (e) => eventSlugFromTitle(e.title) === slug.toLowerCase(),
-  );
-}
-
 export async function generateMetadata({
   params,
 }: PageProps): Promise<Metadata> {
   const {slug} = await params;
-  const event = await findEventBySlug(slug);
+  const event = await getEventBySlug(slug);
   if (!event) {
-    return {title: 'Event not found | CITC'};
+    return {title: 'Event not found | CCRC IT CLUB'};
   }
 
   const plain = event.description
@@ -44,7 +36,7 @@ export async function generateMetadata({
 
 export default async function EventDetailsPage({params}: PageProps) {
   const {slug} = await params;
-  const event = await findEventBySlug(slug);
+  const event = await getEventBySlug(slug);
   if (!event) notFound();
   return <EventDetailsClient event={event} />;
 }
